@@ -1,0 +1,26 @@
+services:
+  app:
+    image: node:18-alpine
+    command: node src/index.mjs
+    ports:
+      - 127.0.0.1:3000:3000
+    working_dir: /app
+    volumes:
+      - ./:/app
+    environment:
+      MYSQL_HOST: mysql
+      MYSQL_USER: root
+      MYSQL_PASSWORD: 9716
+      MYSQL_DB: docker_test
+
+
+  mysql:
+    image: mysql:8.0
+    volumes:
+      - test-mysql-data:/var/lib/mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: 9716
+      MYSQL_DATABASE: docker_test
+
+volumes:
+  test-mysql-data:
