@@ -1,0 +1,4 @@
+#!/bin/bash
+
+PASS=${PASS:-9716}
+sudo docker exec -it sample-mysql-1 mysql -u 'root' --password="$PASS"

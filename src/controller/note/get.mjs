@@ -2,10 +2,10 @@ import { Note } from "../../model/note.mjs"
 import { getNote } from "../../model/note_repository.mjs";
 
 /**
- * @returns { Note }
+ * @returns { Promise< Note > }
  */
-export const execute = ( { id } ) => {
-    const note = getNote( id )
+export const execute = async ( { id } ) => {
+    const note = await getNote( id )
     return note
 }
 

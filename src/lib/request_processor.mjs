@@ -8,14 +8,19 @@ import { getEnv } from "./envreader.mjs";
  */
 export const buildPostParams = async ( req, callback ) => {
     let res = ""
+    let ended = false ;
     req.on( 'data', ( data ) => {
         res += data
     } )
 
     req.on( 'end', () => {
         ended = true
-        res = JSON.parse( res )
-        callback( res )
+        res = new URLSearchParams( res )
+        let params = {}
+        for ( const [ k, v ] of res ) {
+            params[ k ] = v
+        }
+        callback( params )
     } )
 }
 

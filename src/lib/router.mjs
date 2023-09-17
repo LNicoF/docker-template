@@ -1,7 +1,7 @@
 'use strict'
 
 import { IncomingMessage, ServerResponse } from 'http'
-import { buildGetParams, buildPostParams } from "./requestProcessor.mjs"
+import { buildGetParams, buildPostParams } from "./request_processor.mjs"
 
 let routes = {
     [ '404' ]: ( _, res ) => {

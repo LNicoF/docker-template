@@ -1,0 +1,5 @@
+#!/bin/bash
+
+CONTAINER=${CONTAINER:-sample-app-1}
+
+sudo docker logs $CONTAINER $@

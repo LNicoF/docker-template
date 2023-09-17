@@ -1,16 +1,19 @@
 services:
   app:
     image: node:18-alpine
-    command: node src/index.mjs
+    command: sh -c 'yarn install && yarn run dev'
     ports:
       - 127.0.0.1:3000:3000
     working_dir: /app
     volumes:
       - ./:/app
     environment:
+      HOST: localhost
+      PORT: 3000
+
       MYSQL_HOST: mysql
-      MYSQL_USER: root
-      MYSQL_PASSWORD: 9716
+      MYSQL_USER: sample
+      MYSQL_PASS: 9716
       MYSQL_DB: docker_test
 
 

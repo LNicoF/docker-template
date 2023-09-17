@@ -1,0 +1,6 @@
+#!/bin/bash
+
+CONTAINER=${CONTAINER:-sample-app-1}
+
+sudo docker exec $CONTAINER sh -c yarn $@
+
