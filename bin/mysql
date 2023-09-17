@@ -1,4 +1,12 @@
 #!/bin/bash
 
-PASS=${PASS:-9716}
-sudo docker exec -it sample-mysql-1 mysql -u 'root' --password="$PASS"
+PASS=${PASS:-admin}
+DB=${DB:-docker_test}
+CONTAINER=$(basename $PWD)-mysql-1
+
+if [[ $( uname ) == 'Linux' ]]; then
+    sudo docker exec -it $CONTAINER mysql -u 'root' --password="$PASS" $DB
+else
+    docker exec -it $CONTAINER mysql -u 'root' --password="$PASS" $DB
+fi
+

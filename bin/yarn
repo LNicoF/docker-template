@@ -1,6 +1,10 @@
 #!/bin/bash
 
-CONTAINER=${CONTAINER:-sample-app-1}
+CONTAINER=$(basename $PWD)-app-1
 
-sudo docker exec $CONTAINER sh -c yarn $@
+if [[ $( uname ) == 'Linux' ]]; then
+    sudo docker exec $CONTAINER sh -c yarn $@
+else
+    docker exec $CONTAINER sh -c yarn $@
+fi
 

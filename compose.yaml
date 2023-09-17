@@ -13,17 +13,20 @@ services:
 
       MYSQL_HOST: mysql
       MYSQL_USER: sample
-      MYSQL_PASS: 9716
+      MYSQL_PASS: 1234
       MYSQL_DB: docker_test
 
 
   mysql:
     image: mysql:8.0
+    command: --default-authentication-plugin=mysql_native_password
     volumes:
       - test-mysql-data:/var/lib/mysql
     environment:
-      MYSQL_ROOT_PASSWORD: 9716
+      MYSQL_ROOT_PASSWORD: admin123
       MYSQL_DATABASE: docker_test
+      MYSQL_USER: sample
+      MYSQL_PASSWORD: 1234
 
 volumes:
   test-mysql-data:

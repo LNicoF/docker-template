@@ -1,5 +1,10 @@
 #!/bin/bash
 
-CONTAINER=${CONTAINER:-sample-app-1}
+CONTAINER=$(basename $PWD)-app-1
 
-sudo docker logs $CONTAINER $@
+if [[ $( uname ) == 'Linux' ]]; then
+    sudo docker logs $CONTAINER $@
+else
+    docker logs $CONTAINER $@
+fi
+
