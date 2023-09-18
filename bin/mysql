@@ -1,6 +1,6 @@
 #!/bin/bash
 
-PASS=${PASS:-admin}
+PASS=${PASS:-admin123}
 DB=${DB:-docker_test}
 CONTAINER=$(basename $PWD)-mysql-1
 
